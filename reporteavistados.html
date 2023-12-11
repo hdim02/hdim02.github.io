@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Me - Animales</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<style>
+  .carousel-open:checked + .carousel-item {
+    position: static;
+    opacity: 100;
+  }
+  .carousel-item {
+    -webkit-transition: opacity 0.6s ease-out;
+    transition: opacity 0.6s ease-out;
+  }
+  #carousel-1:checked ~ .control-1,
+  #carousel-2:checked ~ .control-2,
+  #carousel-3:checked ~ .control-3 {
+    display: block;
+  }
+  .carousel-indicators {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    bottom: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .carousel-indicators li {
+    display: inline-block;
+    margin: 0 5px;
+  }
+  .carousel-bullet {
+    color: #000;
+    cursor: pointer;
+  }
+  .carousel-bullet:hover {
+    color: #aaa;
+  }
+  
+</style>
+</head>
+<body class="bg-white text-gray-800">
+<!--   -----------------------------------------------------    --> 
+<script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              fontFamily: {
+                sans: ['Inter', 'sans-serif'],
+              },
+            },
+          },
+        }
+    </script>
+    <style>
+        /* Additional styles if needed */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+<!--   -----------------------------------------------------    --> 
+
+<!-- Navigation ---------------------------------------------------->
+<nav class="bg-white shadow">
+  <div class="container mx-auto px-6 py-3">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center">
+        <a class="text-gray-800 text-xl font-bold" href="./Index.html">Find me</a>
+        <div class="mx-8">
+          <ul class="flex items-center">
+            <li class="mx-2"><a class="text-gray-800 hover:text-gray-600" href="#">Reporte de Animales Perdidos</a></li>
+            <li class="mx-2"><a class="text-gray-800 hover:text-gray-600" href="#">Reporte de Animales Avistados</a></li>            
+          </ul>
+        </div>
+      </div>
+      <div class="flex items-center">
+        <button class="text-gray-800 focus:outline-none mx-4 sm:mx-0">
+          <svg class="h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+            <path d="M3 12h18m-9 9V3"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section ------------------------------------------------------------->
+<section class="relative">
+  <img class="w-full h-60 object-cover" src="./img/perro2.avif" alt="Animal">
+  <div class="absolute inset-0 bg-black opacity-25"></div>
+  <div class="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center">
+    <div class="text-center">
+      <h1 class="text-white text-4xl font-bold ">Find Me</h1>
+      <p class="text-yellow-300 text-lg mt-4">Reporte de Animales Avistados</p>
+    </div>
+  </div>
+</section>
+
+<!-- Añadir Section ----------------------------------------------------------->
+<section class="py-12 bg-yellow-300">
+    <div class="container mx-auto px-6 text-center">
+        <div class="mx-8">
+            <ul class="flex items-center">
+              <li class="mx-2"><button id="reportBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Añadir reporte
+            </button></a>
+              </li>
+              <li class="mx-2"><a class="text-gray-800 hover:text-gray-600" href="#">Reporte de Animales Avistados</a></li>            
+            </ul>
+        </div>
+    </div>
+  </section>
+
+<!--   -----------------------------------------------------    --> 
+<section class="my-8">
+    <div class="flex justify-center mt-4">        
+    </div>
+    <h2 class="text-2xl font-semibold mb-4">Animales Avistados</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        
+        <!-- Placeholder for animal cards -->
+        <div class="bg-white shadow rounded-lg p-4">
+            <div class="max-w-2xl mx-auto p-6 bg-white shadow-lg mt-5 ">
+                <div class="flex flex-col md:flex-column">
+                    <div class="md:w-1/2 p-4" style="position: static;">
+                        <img src="./img/perdido1.jpg" alt="Imagen de perro" class="rounded-lg shadow-md">
+                    </div>
+                    <div class="md:w-1/2 p-4">
+                        <h2 class="text-xl font-semibold mb-4">Mascota Avistada</h2>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="ciudad">Ciudad</label>
+                            <div id="ciudad-text" class="text-gray-700">Quito</div>                    
+                        </div>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="sector">Sector</label>
+                            <div id="sector-text" class="text-gray-700">La Central</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="direccion">Dirección</label>
+                            <div id="direccion-text" class="text-gray-700">Av. La Gasca y Jerónimo Leiton</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="fecha-hora">Fecha y Hora</label>
+                            <div id="fecha-text" class="text-gray-700">05/12/2023</div>                    
+                        </div>
+                        <button id="verbtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                            ver
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Repeat for other cards -->
+        <div class="bg-white shadow rounded-lg p-4">
+            <div class="max-w-2xl mx-auto p-6 bg-white shadow-lg mt-5 ">
+                <div class="flex flex-col md:flex-column">
+                    <div class="md:w-1/2 p-4" style="position: static;">
+                        <img src="./img/perdido2.jpg" alt="Imagen de perro" class="rounded-lg shadow-md">
+                    </div>
+                    <div class="md:w-1/2 p-4">
+                        <h2 class="text-xl font-semibold mb-4">Mascota Avistada</h2>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="ciudad">Ciudad</label>
+                            <div id="ciudad-text" class="text-gray-700">Nombre de la Ciudad</div>                    
+                        </div>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="sector">Sector</label>
+                            <div id="sector-text" class="text-gray-700">Sector</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="direccion">Dirección</label>
+                            <div id="direccion-text" class="text-gray-700">Dirección</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="fecha-hora">Fecha y Hora</label>
+                            <div id="fecha-text" class="text-gray-700">Fecha y hora</div>                    
+                        </div>
+                        <button id="verbtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                            ver
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-white shadow rounded-lg p-4">
+            <div class="max-w-2xl mx-auto p-6 bg-white shadow-lg mt-5 ">
+                <div class="flex flex-col md:flex-column">
+                    <div class="md:w-1/2 p-4" style="position: static;">
+                        <img src="./img/perdido3.jpg" alt="Imagen de perro" class="rounded-lg shadow-md">
+                    </div>
+                    <div class="md:w-1/2 p-4">
+                        <h2 class="text-xl font-semibold mb-4">Mascota Avistada</h2>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="ciudad">Ciudad</label>
+                            <div id="ciudad-text" class="text-gray-700">Nombre de la Ciudad</div>                    
+                        </div>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="sector">Sector</label>
+                            <div id="sector-text" class="text-gray-700">Sector</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="direccion">Dirección</label>
+                            <div id="direccion-text" class="text-gray-700">Dirección</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="fecha-hora">Fecha y Hora</label>
+                            <div id="fecha-text" class="text-gray-700">Fecha y hora</div>                    
+                        </div>
+                        <button id="verbtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                            ver
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white shadow rounded-lg p-4">
+            <div class="max-w-2xl mx-auto p-6 bg-white shadow-lg mt-5 ">
+                <div class="flex flex-col md:flex-column">
+                    <div class="md:w-1/2 p-4" style="position: static;">
+                        <img src="./img/perdido4.jpg" alt="Imagen de perro" class="rounded-lg shadow-md">
+                    </div>
+                    <div class="md:w-1/2 p-4">
+                        <h2 class="text-xl font-semibold mb-4">Mascota Avistada</h2>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="ciudad">Ciudad</label>
+                            <div id="ciudad-text" class="text-gray-700">Nombre de la Ciudad</div>                    
+                        </div>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="sector">Sector</label>
+                            <div id="sector-text" class="text-gray-700">Sector</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="direccion">Dirección</label>
+                            <div id="direccion-text" class="text-gray-700">Dirección</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="fecha-hora">Fecha y Hora</label>
+                            <div id="fecha-text" class="text-gray-700">Fecha y hora</div>                    
+                        </div>
+                        <button id="verbtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                            ver
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white shadow rounded-lg p-4">
+            <div class="max-w-2xl mx-auto p-6 bg-white shadow-lg mt-5 ">
+                <div class="flex flex-col md:flex-column">
+                    <div class="md:w-1/2 p-4" style="position: static;">
+                        <img src="./img/perdido5.jpg" alt="Imagen de perro" class="rounded-lg shadow-md">
+                    </div>
+                    <div class="md:w-1/2 p-4">
+                        <h2 class="text-xl font-semibold mb-4">Mascota Avistada</h2>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="ciudad">Ciudad</label>
+                            <div id="ciudad-text" class="text-gray-700">Nombre de la Ciudad</div>                    
+                        </div>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="sector">Sector</label>
+                            <div id="sector-text" class="text-gray-700">Sector</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="direccion">Dirección</label>
+                            <div id="direccion-text" class="text-gray-700">Dirección</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="fecha-hora">Fecha y Hora</label>
+                            <div id="fecha-text" class="text-gray-700">Fecha y hora</div>                    
+                        </div>
+                        <button id="verbtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                            ver
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white shadow rounded-lg p-4">
+            <div class="max-w-2xl mx-auto p-6 bg-white shadow-lg mt-5 ">
+                <div class="flex flex-col md:flex-column">
+                    <div class="md:w-1/2 p-4" style="position: static;">
+                        <img src="./img/perdido6.jpg" alt="Imagen de perro" class="rounded-lg shadow-md">
+                    </div>
+                    <div class="md:w-1/2 p-4">
+                        <h2 class="text-xl font-semibold mb-4">Mascota Avistada</h2>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="ciudad">Ciudad</label>
+                            <div id="ciudad-text" class="text-gray-700">Nombre de la Ciudad</div>                    
+                        </div>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="sector">Sector</label>
+                            <div id="sector-text" class="text-gray-700">Sector</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="direccion">Dirección</label>
+                            <div id="direccion-text" class="text-gray-700">Dirección</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="fecha-hora">Fecha y Hora</label>
+                            <div id="fecha-text" class="text-gray-700">Fecha y hora</div>                    
+                        </div>
+                        <button id="verbtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                            ver
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white shadow rounded-lg p-4">
+            <div class="max-w-2xl mx-auto p-6 bg-white shadow-lg mt-5 ">
+                <div class="flex flex-col md:flex-column">
+                    <div class="md:w-1/2 p-4" style="position: static;">
+                        <img src="./img/perdido7.jpg" alt="Imagen de perro" class="rounded-lg shadow-md">
+                    </div>
+                    <div class="md:w-1/2 p-4">
+                        <h2 class="text-xl font-semibold mb-4">Mascota Avistada</h2>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="ciudad">Ciudad</label>
+                            <div id="ciudad-text" class="text-gray-700">Nombre de la Ciudad</div>                    
+                        </div>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="sector">Sector</label>
+                            <div id="sector-text" class="text-gray-700">Sector</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="direccion">Dirección</label>
+                            <div id="direccion-text" class="text-gray-700">Dirección</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="fecha-hora">Fecha y Hora</label>
+                            <div id="fecha-text" class="text-gray-700">Fecha y hora</div>                    
+                        </div>
+                        <button id="verbtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                            ver
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white shadow rounded-lg p-4">
+            <div class="max-w-2xl mx-auto p-6 bg-white shadow-lg mt-5 ">
+                <div class="flex flex-col md:flex-column">
+                    <div class="md:w-1/2 p-4" style="position: static;">
+                        <img src="./img/perdido8.jpg" alt="Imagen de perro" class="rounded-lg shadow-md">
+                    </div>
+                    <div class="md:w-1/2 p-4">
+                        <h2 class="text-xl font-semibold mb-4">Mascota Avistada</h2>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="ciudad">Ciudad</label>
+                            <div id="ciudad-text" class="text-gray-700">Nombre de la Ciudad</div>                    
+                        </div>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="sector">Sector</label>
+                            <div id="sector-text" class="text-gray-700">Sector</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="direccion">Dirección</label>
+                            <div id="direccion-text" class="text-gray-700">Dirección</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="fecha-hora">Fecha y Hora</label>
+                            <div id="fecha-text" class="text-gray-700">Fecha y hora</div>                    
+                        </div>
+                        <button id="verbtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                            ver
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</section>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 class="text-xl font-semibold mb-4">Reportar avistamiento</h2>
+        <form id="report-form">
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="imagen">Imagen</label>
+                <input type="file" id="imagen" name="imagen" accept="image/*" class="border rounded-lg text-gray-700 focus:outline-none w-full" required>
+            </div>
+
+            <input type="text" placeholder="Nombre de la Ciudad" class="mb-4 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none w-full" required>
+            <input type="text" placeholder="Sector" class="mb-4 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none w-full" required>
+            <input type="text" placeholder="Dirección" class="mb-4 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none w-full" required>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="fecha-hora">Fecha y Hora</label>
+                <input type="datetime-local" id="fecha-hora" name="fecha-hora" class="border rounded-lg text-gray-700 focus:outline-none w-full" required>
+            </div>
+            <textarea placeholder="Descripción" class="mb-4 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none w-full" required></textarea>
+            <input type="text" placeholder="Ubicación" class="mb-4 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none w-full" required>
+            <button type="submit" class="w-full bg-brand-color text-white font-bold py-2 px-4 rounded hover:bg-brand-color-light focus:outline-none focus:shadow-outline">
+                Enviar
+            </button>
+        </form>
+    </div>
+</div>
+<!-- The Modal -->
+<div id="myModaldos" class="modal">
+    <div class="modal-content">
+        <span class="closedos">&times;</span>
+        <h2 class="text-xl font-semibold mb-4">Ver Mascota Avistada</h2>
+        <div class="md:w-1/2 p-4" style="position: static;">
+            <img src="./img/perdido1.jpg" alt="Imagen de perro" class="rounded-lg shadow-md">
+        </div>
+        <div class="mb-3">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="ciudad">Ciudad</label>
+            <div id="ciudad-text" class="text-gray-700">Quito</div>                    
+        </div>
+        <div class="mb-3">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="sector">Sector</label>
+            <div id="sector-text" class="text-gray-700">La Central</div>
+        </div>
+        <div class="mb-3">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="direccion">Dirección</label>
+            <div id="direccion-text" class="text-gray-700">La Gasca y Jerónimo Leiton</div>
+        </div>
+        <div class="mb-3">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="fecha-hora">Fecha y Hora</label>
+            <div id="fecha-text" class="text-gray-700">05/12/2023</div>                    
+        </div>
+        <div class="mb-3">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="descripcion">Descripcion</label>
+            <div id="descripcion-text" class="text-gray-700">Un perro macho de color café claro, se encuentra bien físicamente pero se nota perdido.</div>                    
+        </div>
+        <div class="mb-3">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="ubicacion">Ubicación en mapa</label>
+            <div id="ubicacion-text" class="text-gray-700">Ubicación en el mapa del animal</div>                    
+        </div>
+    </div>
+</div>
+<script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("reportBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+<script>
+    // Get the modal
+    var modaldos = document.getElementById("myModaldos");
+
+    // Get the button that opens the modal
+    var btndos = document.getElementById("verbtn");
+
+    // Get the <span> element that closes the modal
+    var spandos = document.getElementsByClassName("closedos")[0];
+
+    // When the user clicks the button, open the modal 
+    btndos.onclick = function() {
+        modaldos.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    spandos.onclick = function() {
+        modaldos.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modaldos) {
+            modaldos.style.display = "none";
+        }
+    }
+</script>
+<!--   -----------------------------------------------------    --> 
+<style>
+    /* Add your existing CSS styles here */
+    body {
+        font-family: 'Arial', sans-serif;
+    }
+
+    /* Center the modal */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* You can adjust the width as needed */
+        max-width: 600px; /* Set a maximum width for larger screens */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .closedos {
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .closedos:hover {
+        color: #aaa;
+    }
+</style>
+
+
+
+<!-- Footer ---------------------------------------------------->
+<footer class="bg-gray-800">
+  <div class="container mx-auto px-6 py-4">
+    <div class="flex flex-col items-center">
+      <div class="py-6">
+        <div class="flex items-center">
+          <a href="#" class="text-white text-sm text-center">© 2023 Find Me. Todos los derechos reservados.</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

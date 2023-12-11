@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Me - Animales</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<style>
+  .carousel-open:checked + .carousel-item {
+    position: static;
+    opacity: 100;
+  }
+  .carousel-item {
+    -webkit-transition: opacity 0.6s ease-out;
+    transition: opacity 0.6s ease-out;
+  }
+  #carousel-1:checked ~ .control-1,
+  #carousel-2:checked ~ .control-2,
+  #carousel-3:checked ~ .control-3 {
+    display: block;
+  }
+  .carousel-indicators {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    bottom: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .carousel-indicators li {
+    display: inline-block;
+    margin: 0 5px;
+  }
+  .carousel-bullet {
+    color: #000;
+    cursor: pointer;
+  }
+  .carousel-bullet:hover {
+    color: #aaa;
+  }
+</style>
+</head>
+<body class="bg-white text-gray-800">
+
+<!-- Navigation ---------------------------------------------------->
+<nav class="bg-white shadow">
+  <div class="container mx-auto px-6 py-3">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center">
+        <a class="text-gray-800 text-xl font-bold" href="#">Find me</a>
+        <div class="mx-8">
+          <ul class="flex items-center">
+            <li class="mx-2"><a class="text-gray-800 hover:text-gray-600" href="#">Reporte de Animales Perdidos</a></li>
+            <li class="mx-2"><a class="text-gray-800 hover:text-gray-600" href="./reporteavistados.html">Reporte de Animales Avistados</a></li>            
+          </ul>
+        </div>
+      </div>
+      <div class="flex items-center">
+        <button class="text-gray-800 focus:outline-none mx-4 sm:mx-0">
+          <svg class="h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+            <path d="M3 12h18m-9 9V3"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section ------------------------------------------------------------->
+<section class="relative">
+  <img class="w-full h-25 object-cover" src="https://source.unsplash.com/1600x900/?animal" alt="Animal">
+  <div class="absolute inset-0 bg-black opacity-25"></div>
+  <div class="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center">
+    <div class="text-center">
+      <h1 class="text-white text-4xl font-bold">Join Find Me</h1>
+      <p class="text-yellow-300 text-lg mt-4">creemos en un mundo mejor</p>
+    </div>
+  </div>
+</section>
+
+<!-- About Section ----------------------------------------------------------->
+<section class="py-12 bg-yellow-300">
+  <div class="container mx-auto px-6 text-center">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-2xl font-bold text-gray-800 text-left">Sobre Find Me</h2>
+      <p class="text-sm text-gray-700 mt-2 text-left">Establecida en 2023</p>
+      <p class="text-gray-700 mt-2 text-left">"Find Me" es un proyecto centrado en el reporte y ubicación de mascotas perdidas. La plataforma principal presenta una interfaz eficiente para reportes de usuarios y búsqueda avanzada. La landing page se enfoca en futuras expansiones y alianzas con tiendas, veterinarias y fundaciones..</p>
+    </div>
+  </div>
+</section>
+
+<!-- Initiatives Section ---------------------------------------------------->
+<section class="py-12">
+  <div class="container mx-auto px-6 text-center">
+    <h2 class="text-2xl font-bold text-gray-800 ">Nuestras Iniciativas</h2>
+    <p class="text-gray-700 mt-4">Apóyanos y haz la diferencia</p>
+    <div class="flex mt-8">
+      <div class="w-1/3">
+        <img class="h-48 w-full object-cover" src="https://source.unsplash.com/1600x900/?dog" alt="Dog">
+        <h3 class="text-lg font-semibold mt-4">Rescate</h3>
+        <a class="text-yellow-600 hover:text-yellow-500" href="#">visitar</a>
+      </div>
+      <div class="w-1/3 px-4">
+        <img class="h-48 w-full object-cover" src="https://source.unsplash.com/1600x900/?shop" alt="Tienda">
+        <h3 class="text-lg font-semibold mt-4">Tienda</h3>
+        <a class="text-yellow-600 hover:text-yellow-500" href="#">visitar</a>
+      </div>
+      <div class="w-1/3">
+        <img class="h-48 w-full object-cover" src="https://source.unsplash.com/1600x900/?report" alt="Reporte">
+        <h3 class="text-lg font-semibold mt-4">Reporte</h3>
+        <a class="text-yellow-600 hover:text-yellow-500" href="#">visitar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- News Section --------------------------------------------------------->
+<!-- Incluye la biblioteca Swiper (Puedes obtenerlo de su sitio web o usar un CDN) -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<!-- News Section -->
+<section class="py-12 bg-yellow-300">
+  <div class="container mx-auto px-6">
+    <h2 class="text-2xl font-bold text-gray-800">Noticias</h2>
+    <p class="text-gray-700 mt-4">Actualidades sobre nosotros</p>
+
+    <!-- Swiper -->
+    <div class="swiper-container mt-8">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img class="h-48 w-full object-cover" src="https://source.unsplash.com/1600x900/?news" alt="Noticia uno">
+          <h3 class="text-lg font-semibold mt-4 text-center">Noticia uno</h3>
+        </div>
+        <div class="swiper-slide">
+          <img class="h-48 w-full object-cover" src="https://source.unsplash.com/1600x900/?event" alt="Noticia dos">
+          <h3 class="text-lg font-semibold mt-4 text-center">Noticia dos</h3>
+        </div>
+        <!-- Agrega más slides según sea necesario -->
+      </div>
+      <!-- Agrega la paginación -->
+      
+      <!-- Agrega la navegación (flechas) -->
+      
+    </div>
+  </div>
+
+  <!-- Inicializa Swiper -->
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 1,
+      spaceBetween: 10,
+      loop: true,
+      autoplay: {
+        delay: 5000, // milisegundos entre slides
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  </script>
+</section>
+
+<!-- Why Help Section ---------------------------------------------------->
+<section class="py-12">
+  <div class="container mx-auto px-6 text-center">
+    <h2 class="text-2xl font-bold text-gray-800">¿Por qué nosotros?</h2>
+    <div class="flex mt-8">
+      <div class="w-1/2">
+        <img class="h-48 w-full object-cover" src="https://source.unsplash.com/1600x900/?help" alt="Por qué ayudarnos">
+      </div>
+      <div class="w-1/2 px-4">
+        <p class="text-gray-700 mt-4 text-left">Somos una página web que espera ser la conexión entre fundaciones y los ciudadanos preocupados por el bienestar animal y cuidado de los mismos. Queremos ser la cara en la que todos piensen cuando vean un animal en la calle o en situación de maltrato, de igual manera el lugar con conexiones para buscar veterinarias o productos para mascotas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Partners Section ---------------------------------------------------->
+<section class="py-12 bg-yellow-300">
+  <div class="container mx-auto px-6 text-center">
+    <h2 class="text-2xl font-bold text-gray-800">Nuestros Socios!</h2>
+    <div class="flex mt-8">
+      <div class="w-full">
+        <!-- Automatic Carousel -->
+        <div class="carousel relative shadow-2xl bg-white">
+          <div class="carousel-inner relative overflow-hidden w-full">
+            <!--Slide 1-->
+            <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
+            <div class="carousel-item absolute opacity-0" style="height:50vh;">
+              <img src="https://source.unsplash.com/1600x900/?partner" class="block w-full" alt="Partner 1">
+            </div>
+            <label for="carousel-3" class="prev control-1 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-200 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
+            <label for="carousel-2" class="next control-1 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-200 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
+            
+            <!--Slide 2-->
+            <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
+            <div class="carousel-item absolute opacity-0" style="height:50vh;">
+              <img src="https://source.unsplash.com/1600x900/?collaboration" class="block w-full" alt="Partner 2">
+            </div>
+            <label for="carousel-1" class="prev control-2 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-200 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
+            <label for="carousel-3" class="next control-2 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-200 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label> 
+
+            <!--Slide 3-->
+            <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
+            <div class="carousel-item absolute opacity-0" style="height:50vh;">
+              <img src="https://source.unsplash.com/1600x900/?team" class="block w-full" alt="Partner 3">
+            </div>
+            <label for="carousel-2" class="prev control-3 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-200 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
+            <label for="carousel-1" class="next control-3 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-200 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
+
+            <!-- Add additional indicators for each slide-->
+            <ol class="carousel-indicators">
+              <li class="inline-block mr-3">
+                <label for="carousel-1" class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-gray-900">•</label>
+              </li>
+              <li class="inline-block mr-3">
+                <label for="carousel-2" class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-gray-900">•</label>
+              </li>
+              <li class="inline-block mr-3">
+                <label for="carousel-3" class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-gray-900">•</label>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section ---------------------------------------------------->
+<section class="py-12">
+  <div class="container mx-auto px-6">
+    <div class="flex flex-wrap justify-between">
+      <!-- Contacto -->
+      <div class="w-full md:w-1/3 mb-8 md:mb-0 md:mr-4"> 
+        <h2 class="text-2xl font-bold text-gray-800">Contáctanos</h2>
+        <div class="mt-8">
+          <form>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Nombre</label>
+              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="Tu nombre">
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email</label>
+              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="tu@email.com">
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="message">Mensaje</label>
+              <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="message" placeholder="Tu mensaje"></textarea>
+            </div>
+            <div class="flex items-center justify-between">
+              <button class="bg-yellow-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                Enviar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- Donaciones -->   
+      <div class="w-full md:w-1/3 mb-8 md:mb-0 md:mr-4">
+            <h2 class="text-2xl font-bold text-gray-800">Donaciones</h2>
+          <p class="mt-8 text-gray-700">Próximamente.</p>
+          <div class="mt-8">
+            <button class="bg-yellow-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+              Donar ahora
+            </button>
+          </div>
+      </div>      
+    </div>
+  </div>
+</section>
+
+  <!-- Redes sociales -->
+  <section class="py-12 bg-yellow-300">
+    <div class="container mx-auto px-6 text-center"> 
+      <div class="max-w-2xl mx-auto">
+        <h2 class="text-2xl font-bold text-gray-800 text-center">Redes Sociales</h2>
+        <p class="text-sm text-gray-700 mt-2 text-center">Visita nuestras redes!</p>
+        <div class="flex justify-center mt-4 ">
+          <a href="#" class="block w-8 h-8 rounded-full overflow-hidden shadow-lg mr-4">
+            <img src="https://source.unsplash.com/1600x900/?facebook" alt="Facebook" class="w-full h-full object-cover">
+          </a>
+          <a href="#" class="block w-8 h-8 rounded-full overflow-hidden shadow-lg mr-4">
+            <img src="https://source.unsplash.com/1600x900/?twitter" alt="Twitter" class="w-full h-full object-cover">
+          </a>
+          <a href="#" class="block w-8 h-8 rounded-full overflow-hidden shadow-lg">
+            <img src="https://source.unsplash.com/1600x900/?instagram" alt="Instagram" class="w-full h-full object-cover">
+          </a>
+        </div>
+      </div>                      
+    </div>
+  </section>
+  
+
+
+<!-- Footer ---------------------------------------------------->
+<footer class="bg-gray-800">
+  <div class="container mx-auto px-6 py-4">
+    <div class="flex flex-col items-center">
+      <div class="py-6">
+        <div class="flex items-center">
+          <a href="#" class="text-white text-sm text-center">© 2023 Find Me. Todos los derechos reservados.</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
